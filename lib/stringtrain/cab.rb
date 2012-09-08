@@ -23,30 +23,27 @@ module Stringtrain
     # @option opts [String,Array] :surround_with (' ') A string or array that will be used around +string+. If it is an array, the first and last elements will be used for the left and right side of +string+.
     def part(string, opts={})
       opts = { condition: true, prefix: nil, suffix: nil, surround_with: ' ' }.merge(opts)
-      puts "Options: #{opts.inspect}"
       pieces = [opts[:prefix], string, opts[:suffix]]
-      puts "Pieces: #{pieces}"
       part = if opts[:surround_with].respond_to?(:at)
-        puts "opts[:surround_with].respond_to?(:at)"
         pieces.insert(-1,opts[:surround_with].last)
         pieces.insert(1,opts[:surround_with].first)
-        puts "Pieces joined: #{pieces.compact.join.inspect}"
+        puts "Pieces: #{pieces.inspect}"
+        puts "Pieces compacted: #{pieces.compact.inspect}"
+        puts "Pieces joined: #{pieces.compact.join(opts[:surround_with]).inspect}"
         pieces.compact.join
       else
-        puts "surround_with is a string/something else that does not respont to :at"
+        puts "Pieces: #{pieces.inspect}"
+        puts "Pieces compacted: #{pieces.compact.inspect}"
+        puts "Pieces joined: #{pieces.compact.join(opts[:surround_with]).inspect}"
         pieces.compact.join(opts[:surround_with])
       end
       if !string.blank?
-        puts "String is not blank!"
         parts << part if opts[:condition]
-        puts "Parts state: #{parts.inspect}"
       end
     end
 
     # @return [String] The resultant string.
     def to_s
-      puts "!!! CONVERTING TO STRING !!!"
-      puts "self.part_separator: #{self.part_separator.inspect}"
       parts.join(self.part_separator)
     end
   end
