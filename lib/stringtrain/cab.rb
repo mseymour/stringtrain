@@ -29,7 +29,7 @@ module Stringtrain
         pieces.insert(1,opts[:surround_with].first)
         puts "Pieces: #{pieces.inspect}"
         puts "Pieces compacted: #{pieces.compact.inspect}"
-        puts "Pieces joined: #{pieces.compact.join(opts[:surround_with]).inspect}"
+        puts "Pieces joined: #{pieces.compact.join.inspect}"
         pieces.compact.join
       else
         puts "Pieces: #{pieces.inspect}"
