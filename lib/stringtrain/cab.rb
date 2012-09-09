@@ -24,7 +24,9 @@ module Stringtrain
     def part(string, opts={})
       opts = { condition: true, prefix: nil, suffix: nil, surround_with: ' ' }.merge(opts)
       pieces = [opts[:prefix], string, opts[:suffix]]
-      part = if opts[:surround_with].respond_to?(:at)
+      part = if opts[:surround_with].respond_to?(:fetch)
+        puts 'responds to :fetch'
+        puts "Pieces (before insert): #{pieces.inspect}"
         pieces.insert(-1,opts[:surround_with].last)
         pieces.insert(1,opts[:surround_with].first)
         puts "Pieces: #{pieces.inspect}"
@@ -32,6 +34,7 @@ module Stringtrain
         puts "Pieces joined: #{pieces.compact.join.inspect}"
         pieces.compact.join
       else
+        puts 'does no respond to :fetch'
         puts "Pieces: #{pieces.inspect}"
         puts "Pieces compacted: #{pieces.compact.inspect}"
         puts "Pieces joined: #{pieces.compact.join(opts[:surround_with]).inspect}"
