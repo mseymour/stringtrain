@@ -38,7 +38,7 @@ module Stringtrain
     #       a.part cd.current.album, surround_with: %w{[ ]}, condition: cd.current.album?
     #     end
     #   }
-    #   #=> #08: Loreena McKennitt - Dante's Prayer [The Book Of Secrets (1997)]
+    #   #=> "#08: Loreena McKennitt - Dante's Prayer [The Book Of Secrets (1997)]"
     def part(string, opts={})
       opts = { condition: true, prefix: nil, suffix: nil, surround_with: nil }.merge(opts)
       pieces = [opts[:prefix], string, opts[:suffix]]
