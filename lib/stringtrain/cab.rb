@@ -40,7 +40,7 @@ module Stringtrain
     #   }
     #   #=> "#08: Loreena McKennitt - Dante's Prayer [The Book Of Secrets (1997)]"
     def part(string, opts={})
-      opts = { condition: true, prefix: nil, suffix: nil, surround_with: nil }.merge(opts)
+      opts = { condition: true, prefix: nil, suffix: nil, surround_with: ' ' }.merge(opts)
       pieces = [opts[:prefix], string, opts[:suffix]]
       part = if opts[:surround_with].respond_to?(:fetch)
         pieces.insert(-1,opts[:surround_with].last)
